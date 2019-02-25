@@ -94,7 +94,7 @@ Ogr2ogr.prototype.exec = function(cb) {
     .on('close', function() {
       var data = Buffer.concat(buf)
       if (ogr2ogr._format == 'GeoJSON') {
-        try { data = JSON.parse(data) }
+        try { data = JSON.parse(data.toString('utf8')) }
         catch (er) { return one(er) }
       }
       one(null, data)
@@ -204,7 +204,7 @@ Ogr2ogr.prototype._run = function() {
 
     var one = util.oneCallback(wrapUp)
 
-    s.stderr.setEncoding('ascii')
+    s.stderr.setEncoding('utf8')
     s.stderr.on('data', function(chunk) {
       ogr2ogr._onStderr(chunk);
       if(/Error/i.test(chunk)) {
