@@ -36,7 +36,7 @@ function Ogr2ogr(mixed, fmt) {
   this._onStderr=function() {};
   this._driver = {}
   this._args = []
-  this._timeout = 15000
+  this._timeout = 1000000
   this._format = 'GeoJSON'
   this._skipfailures = false
 
