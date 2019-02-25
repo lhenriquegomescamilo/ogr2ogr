@@ -119,7 +119,7 @@ Ogr2ogr.prototype.promise = function(cb) {
             var data = Buffer.concat(buf)
             if (ogr2ogr._format == 'GeoJSON') {
                try {
-                  data = JSON.parse(data);
+                  data = JSON.parse(data.toJSON('uft8'));
                } catch (er) {
                   reject(er)
                }
